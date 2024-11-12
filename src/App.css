@@ -1,0 +1,65 @@
+.App {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #2b1b1b;
+  direction: rtl;
+}
+
+.all-tasks{
+  max-height: 600px;
+  overflow: auto;
+}
+
+.task-card{
+  transition: 0.3s !important;
+  margin-bottom: 15px !important;
+}
+.task-card:hover{
+  padding: 10px 0;
+  box-shadow: 0 7px 7px rgba(0, 0, 0, 0.4);
+}
+
+.icon-btn{
+  transition: all 0.3s !important;
+}
+.icon-btn:hover{
+  background-color: #888 !important;
+  box-shadow: 0 7px 7px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 600px) {
+  .task-grid{
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+}
+
+/* === font faces === */
+
+@font-face {
+  font-family: Alex;
+  src: url('../public/fonts/Alexandria-Medium.ttf');
+  font-weight: normal;
+}
+@font-face {
+  font-family: Alex;
+  src: url('../public/fonts/Alexandria-Bold.ttf');
+  font-weight: bold;
+}
+@font-face {
+  font-family: Alex;
+  src: url('../public/fonts/Alexandria-ExtraBold.ttf');
+  font-weight: 900;
+}
+@font-face {
+  font-family: Alex;
+  src: url('../public/fonts/Alexandria-Light.ttf');
+  font-weight: 200;
+}
+
+/* === font faces === */
