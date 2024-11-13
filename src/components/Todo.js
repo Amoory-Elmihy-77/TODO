@@ -14,7 +14,7 @@ import { v4 as uuid } from "uuid";
 // Components
 import Task from "./task";
 //hooks
-import { useContext, useState } from "react";
+import { useContext, useMemo, useState } from "react";
 import { TasksContext } from "../contexts/tasksContext";
 
 export default function Todo() {
@@ -22,24 +22,26 @@ export default function Todo() {
     const [showType, setShowType] = useState('all');
     const {tasks, setTasks} = useContext(TasksContext);
     let allTasks = [];
-    if (tasks) {
-        const notDone = tasks.filter((t) => {
+    const notDone = useMemo(() => {
+        return tasks.filter((t) => {
             return !t.done;
         })
-        const done = tasks.filter((t) => {
+    }, [tasks]);
+    const done = useMemo(() => {
+        tasks.filter((t) => {
             return t.done;
         })
+    }, [tasks]);
         let shownType = tasks;
         if (showType === 'done')
-            shownType = done;
+            shownType = done ?? [];
         else if (showType === 'notDone')
-            shownType = notDone;
+            shownType = notDone ?? [];
         else
             shownType = tasks;
-        allTasks = shownType.map((t) => {
-        return (<Task key={t.id} task={t}/>)
+    allTasks = shownType.map((t) => {
+        return (<Task key={t.id ?? 0} task={t} />)
     })
-    }
     return (
         <Container maxWidth={"sm"}>
             <Card sx={{ minWidth: 275 }}>

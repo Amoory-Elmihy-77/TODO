@@ -17,7 +17,7 @@ const theme = createTheme({
 function App() {
   const [tasks, setTasks] = useState([{}]);
   useEffect(() => {
-    const localTasks = JSON.parse(localStorage.getItem('tasks'));
+    const localTasks = JSON.parse(localStorage.getItem('tasks') || "[]") ?? [];
     setTasks(localTasks);
   },[])
   return (
