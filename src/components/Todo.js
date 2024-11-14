@@ -28,7 +28,7 @@ export default function Todo() {
         })
     }, [tasks]);
     const done = useMemo(() => {
-        tasks.filter((t) => {
+        return tasks.filter((t) => {
             return t.done;
         })
     }, [tasks]);
